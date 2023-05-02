@@ -5,21 +5,23 @@ class AppElevatedButton extends StatelessWidget {
     required this.icon,
     required this.color,
     required this.onPressed,
+    this.disabled = false,
     super.key,
   });
 
   final Icon icon;
   final Color color;
   final VoidCallback onPressed;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: disabled ? null : onPressed,
       style: ButtonStyle(
         shape: MaterialStateProperty.all(const CircleBorder()),
         padding: MaterialStateProperty.all(const EdgeInsets.all(20)),
-        backgroundColor: MaterialStateProperty.all(color),
+        backgroundColor: MaterialStateProperty.all(disabled ? Colors.grey : color),
       ),
       child: icon,
     );
