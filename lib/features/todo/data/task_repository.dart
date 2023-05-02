@@ -18,7 +18,7 @@ class TaskRepository implements ITaskRepository {
   @override
   Future<Task> getById(int id) async {
     final task = await _localStorage.fetch(id);
-    //TODO(): nullsafety!!!
+    //TODO(smarenkov): Nullsafety! Add a try catch check and display an error if the task is not found
     return task!;
   }
 
