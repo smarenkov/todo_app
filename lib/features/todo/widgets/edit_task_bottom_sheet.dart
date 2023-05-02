@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_mobile_app/models/models.dart';
 import 'package:todo_mobile_app/ui_kit/ui_kit.dart';
 
-class CreateTaskBottomSheet extends StatefulWidget {
-  const CreateTaskBottomSheet({
+class EditTaskBottomSheet extends StatefulWidget {
+  const EditTaskBottomSheet({
     required this.onSubmit,
     super.key,
   });
@@ -11,10 +11,10 @@ class CreateTaskBottomSheet extends StatefulWidget {
   final Function(TaskDto) onSubmit;
 
   @override
-  State<StatefulWidget> createState() => _CreateTaskBottomSheetState();
+  State<StatefulWidget> createState() => _EditTaskBottomSheetState();
 }
 
-class _CreateTaskBottomSheetState extends State<CreateTaskBottomSheet> {
+class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
   final _taskNameTextController = TextEditingController();
   final _taskDescriptionTextController = TextEditingController();
 
