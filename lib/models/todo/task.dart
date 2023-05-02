@@ -1,21 +1,23 @@
-import 'package:todo_mobile_app/models/todo/task_status.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
-class Task {
-  final String name;
-  final String description;
-  final TaskStatus status;
+part 'task.g.dart';
+part 'task.freezed.dart';
 
-  const Task({
-    required this.name,
-    required this.description,
-    required this.status,
-  });
+@freezed
 
-  factory Task.test() {
-    return const Task(
-      name: 'Test name',
-      description: 'Test description',
-      status: TaskStatus.inProgress,
-    );
-  }
+@HiveType(typeId: 0)
+class Task with _$Task {
+  const factory Task({
+    @HiveField(0)
+    required int id,
+    @HiveField(1)
+    required String name,
+    @HiveField(2)
+    required String description,
+    @HiveField(3)
+    required bool isCompleted,
+    @HiveField(4)
+    required bool isDeleted,
+  }) = _Task;
 }

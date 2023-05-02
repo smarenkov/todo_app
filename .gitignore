@@ -33,8 +33,10 @@ migrate_working_dir/
 /build/
 
 # Codegen
+*.g.dart
 *.freezed.dart
 **.freezed.dart
+**/**.g.dart
 
 # Symbolication related
 app.*.symbols

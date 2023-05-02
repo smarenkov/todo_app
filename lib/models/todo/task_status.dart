@@ -1,4 +1,0 @@
-enum TaskStatus {
-  inProgress,
-  completed
-}
