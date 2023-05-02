@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'features/features.dart';
+import 'package:todo_mobile_app/features/features.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,7 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: TodoScreen()
+      home: TodoScreen(),
     );
   }
 }
