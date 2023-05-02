@@ -31,17 +31,17 @@ class TodoScreen extends StatelessWidget {
                         final task = state.displayedTasks[index];
                         return TodoListItem(
                           task: task,
-                          onPress: () {
+                          onPressed: () {
                             showEditTask(context, task);
                           },
-                          onChanged: (value) {
+                          onChangedCompleted: (value) {
                             context.read<TodoListBloc>().add(
                                   TodoListEvent.updateTask(
                                     task: task.copyWith(isCompleted: value),
                                   ),
                                 );
                           },
-                          onPressDelete: () {
+                          onPressedDelete: () {
                             context.read<TodoListBloc>().add(
                                   TodoListEvent.removeTask(
                                     task: task,

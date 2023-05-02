@@ -83,7 +83,16 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
       const TodoListState.fetching(),
     );
 
-    final tasks = await _repository.getAll();
+    // Sort the list by isCompleted value, false at the beginning, and true after them
+    final tasks = await _repository.getAll()
+      ..sort(
+        (a, b) => a.isCompleted == b.isCompleted
+            ? 0
+            : a.isCompleted
+                ? 1
+                : -1,
+      );
+
     emitter.call(
       TodoListState.fetched(
         tasks: tasks,
