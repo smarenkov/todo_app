@@ -5,10 +5,14 @@ import 'package:todo_mobile_app/ui_kit/ui_kit.dart';
 class EditTaskBottomSheet extends StatefulWidget {
   const EditTaskBottomSheet({
     required this.onSubmit,
+    this.initialName,
+    this.initialDescription,
     super.key,
   });
 
   final Function(TaskDto) onSubmit;
+  final String? initialName;
+  final String? initialDescription;
 
   @override
   State<StatefulWidget> createState() => _EditTaskBottomSheetState();
@@ -19,6 +23,15 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
   final _taskDescriptionTextController = TextEditingController();
 
   bool _submitButtonDisable = true;
+
+  @override
+  void initState() {
+    _taskNameTextController.text = widget.initialName ?? '';
+    _taskDescriptionTextController.text = widget.initialDescription ?? '';
+
+    _submitButtonDisable = _taskNameTextController.text.isEmpty;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
