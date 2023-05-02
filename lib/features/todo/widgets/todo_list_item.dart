@@ -15,17 +15,21 @@ class TodoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('#${task.id} ${task.name}'),
-      subtitle: Text(task.description),
-      leading: Checkbox(
-        value: task.isCompleted,
-        onChanged: (value) => onChanged(value ?? false),
-      ),
-      trailing: IconButton(
-        icon: const Icon(Icons.delete),
-        color: Colors.red,
-        onPressed: onPressDelete,
+    return Card(
+      child: ListTile(
+        title: Text('#${task.id} ${task.name}'),
+        subtitle: Text(task.description),
+        leading: Checkbox(
+          value: task.isCompleted,
+          shape: const CircleBorder(),
+          onChanged: (value) => onChanged(value ?? false),
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete),
+          color: Colors.red,
+          onPressed: onPressDelete,
+        ),
+        onTap: () {},
       ),
     );
   }
