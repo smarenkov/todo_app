@@ -11,21 +11,21 @@ class TodoListItem extends StatelessWidget {
 
   final Task task;
   final Function(bool) onChanged;
-  final Function() onPressDelete;
+  final VoidCallback onPressDelete;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(task.name),
+      title: Text('#${task.id} ${task.name}'),
       subtitle: Text(task.description),
       leading: Checkbox(
-        value: task.status == TaskStatus.completed,
+        value: task.isCompleted,
         onChanged: (value) => onChanged(value ?? false),
       ),
       trailing: IconButton(
         icon: const Icon(Icons.delete),
         color: Colors.red,
-        onPressed: () => onPressDelete,
+        onPressed: onPressDelete,
       ),
     );
   }
