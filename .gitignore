@@ -32,6 +32,10 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Codegen
+*.freezed.dart
+**.freezed.dart
+
 # Symbolication related
 app.*.symbols
 
