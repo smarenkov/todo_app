@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_mobile_app/features/todo/bloc/todo_list_bloc.dart';
 import 'package:todo_mobile_app/features/todo/data/i_task_repository.dart';
-import 'package:todo_mobile_app/features/todo/widgets/create_task_bottom_sheet.dart';
+import 'package:todo_mobile_app/features/todo/widgets/edit_task_bottom_sheet.dart';
 import 'package:todo_mobile_app/features/todo/widgets/todo_list_item.dart';
 import 'package:todo_mobile_app/ui_kit/app_elevated_button.dart';
 
@@ -48,6 +48,31 @@ class TodoScreen extends StatelessWidget {
                                       task: task.copyWith(isCompleted: value),
                                     ),
                                   ),
+                              onPress: () => showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20),
+                                  ),
+                                ),
+                                builder: (_) {
+                                  return EditTaskBottomSheet(
+                                    initialName: task.name,
+                                    initialDescription: task.description,
+                                    onSubmit: (taskDto) => context
+                                        .read<TodoListBloc>()
+                                        .add(
+                                          TodoListEvent.updateTask(
+                                            task: task.copyWith(
+                                              name: taskDto.name,
+                                              description: taskDto.description,
+                                            ),
+                                          ),
+                                        ),
+                                  );
+                                },
+                              ),
                               onPressDelete: () =>
                                   context.read<TodoListBloc>().add(
                                         TodoListEvent.removeTask(
@@ -75,7 +100,7 @@ class TodoScreen extends StatelessWidget {
                             ),
                           ),
                           builder: (_) {
-                            return CreateTaskBottomSheet(
+                            return EditTaskBottomSheet(
                               onSubmit: (taskDto) =>
                                   context.read<TodoListBloc>().add(
                                         TodoListEvent.addTask(
