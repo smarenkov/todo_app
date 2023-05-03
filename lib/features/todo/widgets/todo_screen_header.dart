@@ -8,7 +8,7 @@ class TodoScreenHeader extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(10),
       child: Text(
-        'Inbox tasks',
+        'Todo tasks',
         style: TextStyle(
           fontStyle: FontStyle.normal,
           fontWeight: FontWeight.normal,

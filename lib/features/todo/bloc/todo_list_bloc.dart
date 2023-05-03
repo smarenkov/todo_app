@@ -19,7 +19,7 @@ class TodoListState with _$TodoListState {
         orElse: () => false,
       );
 
-  List<Task> get displayedTasks => maybeMap(
+  List<Task> get unDeletedTasks => maybeMap(
         orElse: () => tasks.where((task) => !task.isDeleted).toList(),
       );
 
