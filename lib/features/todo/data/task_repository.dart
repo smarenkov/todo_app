@@ -11,8 +11,7 @@ class TaskRepository implements ITaskRepository {
 
   @override
   Future<List<Task>> getAll() async {
-    final tasks = await _localStorage.fetchAll();
-    return tasks;
+    return _localStorage.fetchAll();
   }
 
   @override
