@@ -53,6 +53,7 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
             onChanged: (text) => setState(
               () => _submitButtonDisable = text.isEmpty,
             ),
+            autofocus: true,
           ),
           TextField(
             controller: _taskDescriptionTextController,
