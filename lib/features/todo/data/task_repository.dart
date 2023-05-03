@@ -1,13 +1,22 @@
-import 'package:todo_mobile_app/features/todo/data/i_task_repository.dart';
 import 'package:todo_mobile_app/models/models.dart';
 import 'package:todo_mobile_app/utils/utils.dart';
 
-class TaskRepository implements ITaskRepository {
-  TaskRepository({
-    required ITaskStorage localStorage,
+abstract class TaskRepository {
+  Future<List<Task>> getAll();
+
+  Future<Task> save(TaskDto task);
+
+  Future<void> update(Task task);
+
+  Future<void> delete(Task task);
+}
+
+class TaskRepositoryImpl implements TaskRepository {
+  TaskRepositoryImpl({
+    required TaskStorage localStorage,
   }) : _localStorage = localStorage;
 
-  final ITaskStorage _localStorage;
+  final TaskStorage _localStorage;
 
   @override
   Future<List<Task>> getAll() async {
@@ -24,7 +33,7 @@ class TaskRepository implements ITaskRepository {
     await _localStorage.update(task);
   }
 
-    @override
+  @override
   Future<void> delete(Task task) async {
     await _localStorage.delete(task);
   }

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:todo_mobile_app/features/todo/data/i_task_repository.dart';
+import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
 import 'package:todo_mobile_app/models/models.dart';
 
 part 'todo_list_bloc.freezed.dart';
@@ -57,7 +57,7 @@ class TodoListEvent with _$TodoListEvent {
 
 class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
   TodoListBloc({
-    required ITaskRepository repository,
+    required TaskRepository repository,
   })  : _repository = repository,
         super(
           const TodoListState.initial(),
@@ -73,7 +73,7 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
     add(const TodoListEvent.fetch());
   }
 
-  final ITaskRepository _repository;
+  final TaskRepository _repository;
 
   Future<void> _fetch(
     _TodoListEventFetch event,

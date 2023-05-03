@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_mobile_app/features/todo/bloc/todo_list_bloc.dart';
-import 'package:todo_mobile_app/features/todo/data/i_task_repository.dart';
+import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
 import 'package:todo_mobile_app/features/todo/widgets/edit_task_bottom_sheet.dart';
 import 'package:todo_mobile_app/features/todo/widgets/todo_list_item.dart';
 import 'package:todo_mobile_app/features/todo/widgets/todo_screen_header.dart';
@@ -17,7 +17,7 @@ class TodoScreen extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => TodoListBloc(
-          repository: context.read<ITaskRepository>(),
+          repository: context.read<TaskRepository>(),
         ),
         child: BlocBuilder<TodoListBloc, TodoListState>(
           builder: (context, state) {

@@ -1,8 +1,19 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo_mobile_app/models/models.dart';
-import 'package:todo_mobile_app/utils/utils.dart';
 
-class TaskStorage implements ITaskStorage {
+abstract class TaskStorage {
+  Future<void> init();
+
+  Future<List<Task>> fetchAll();
+
+  Future<Task> save(TaskDto task);
+
+  Future<void> delete(Task task);
+
+  Future<void> update(Task task);
+}
+
+class TaskStorageImpl implements TaskStorage {
   late Box<Task> _taskBox;
 
   @override
