@@ -7,6 +7,7 @@ import 'package:todo_mobile_app/features/todo/widgets/todo_list_item.dart';
 import 'package:todo_mobile_app/features/todo/widgets/todo_screen_header.dart';
 import 'package:todo_mobile_app/models/todo/task.dart';
 import 'package:todo_mobile_app/ui_kit/app_elevated_button.dart';
+import 'package:todo_mobile_app/utils/utils.dart';
 
 class TodoScreen extends StatelessWidget {
   const TodoScreen({super.key});
@@ -26,9 +27,9 @@ class TodoScreen extends StatelessWidget {
                   const TodoScreenHeader(),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: state.displayedTasks.length,
+                      itemCount: state.unDeletedTasks.length,
                       itemBuilder: (context, index) {
-                        final task = state.displayedTasks[index];
+                        final task = state.unDeletedTasks[index];
                         return TodoListItem(
                           task: task,
                           onPressed: () {
@@ -70,7 +71,7 @@ class TodoScreen extends StatelessWidget {
   }
 
   Future<dynamic> showEditTask(BuildContext context, Task task) {
-    return _showModalBottomSheet(
+    return AppBottomSheet.showDefaultModalBottomSheet(
       context: context,
       builder: (_) {
         return EditTaskBottomSheet(
@@ -90,7 +91,7 @@ class TodoScreen extends StatelessWidget {
   }
 
   Future<dynamic> showCreateTask(BuildContext context) {
-    return _showModalBottomSheet(
+    return AppBottomSheet.showDefaultModalBottomSheet(
       context: context,
       builder: (_) {
         return EditTaskBottomSheet(
@@ -101,23 +102,6 @@ class TodoScreen extends StatelessWidget {
               ),
         );
       },
-    );
-  }
-
-  //TODO(smarenkov): Extract to different file
-  Future<dynamic> _showModalBottomSheet({
-    required BuildContext context,
-    required Widget Function(BuildContext) builder,
-  }) {
-    return showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
-      ),
-      builder: builder,
     );
   }
 }
