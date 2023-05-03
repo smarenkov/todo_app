@@ -8,7 +8,7 @@ Project Features:
 - Create, read, update and delete todo tasks
 
 Future Features:
-- The history of deleting tasks
-- Ability to restore deleted tasks
+- History of deleting tasks
+- Restore deleted tasks
 - Permanent deletion of tasks
 - Design improvement
