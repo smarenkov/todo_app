@@ -19,11 +19,6 @@ class TaskStorage implements ITaskStorage {
   }
 
   @override
-  Future<Task?> fetch(int key) async {
-    return _taskBox.get(key);
-  }
-
-  @override
   Future<Task> save(TaskDto taskDto) async {
     final task = Task(
       id: _taskBox.values.length,

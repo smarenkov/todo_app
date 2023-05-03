@@ -4,8 +4,6 @@ abstract class ITaskRepository {
 
   Future<List<Task>> getAll();
 
-  Future<Task> getById(int id);
-
   Future<Task> save(TaskDto task);
 
   Future<void> update(Task task);

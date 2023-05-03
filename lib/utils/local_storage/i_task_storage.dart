@@ -5,8 +5,6 @@ abstract class ITaskStorage {
 
   Future<List<Task>> fetchAll();
 
-  Future<Task?> fetch(int key);
-
   Future<Task> save(TaskDto task);
 
   Future<void> delete(Task task);
