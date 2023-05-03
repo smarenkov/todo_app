@@ -17,7 +17,7 @@ class TodoScreen extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => TodoListBloc(
-          repository: context.read<TaskRepository>(),
+          repository: RepositoryProvider.of<TaskRepository>(context),
         ),
         child: BlocBuilder<TodoListBloc, TodoListState>(
           builder: (context, state) {
