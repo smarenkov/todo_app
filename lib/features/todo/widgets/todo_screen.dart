@@ -26,31 +26,38 @@ class TodoScreen extends StatelessWidget {
                 children: [
                   const TodoScreenHeader(),
                   Expanded(
-                    child: ListView.builder(
-                      itemCount: state.unDeletedTasks.length,
-                      itemBuilder: (context, index) {
-                        final task = state.unDeletedTasks[index];
-                        return TodoListItem(
-                          task: task,
-                          onPressed: () {
-                            showEditTask(context, task);
-                          },
-                          onChangedCompleted: (value) {
-                            context.read<TodoListBloc>().add(
-                                  TodoListEvent.updateTask(
-                                    task: task.copyWith(isCompleted: value),
-                                  ),
-                                );
-                          },
-                          onPressedDelete: () {
-                            context.read<TodoListBloc>().add(
-                                  TodoListEvent.removeTask(
-                                    task: task,
-                                  ),
-                                );
-                          },
-                        );
-                      },
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              final task = state.unDeletedTasks[index];
+                              return TodoListItem(
+                                task: task,
+                                onPressed: () {
+                                  showEditTask(context, task);
+                                },
+                                onChangedCompleted: (value) {
+                                  context.read<TodoListBloc>().add(
+                                        TodoListEvent.updateTask(
+                                          task:
+                                              task.copyWith(isCompleted: value),
+                                        ),
+                                      );
+                                },
+                                onPressedDelete: () {
+                                  context.read<TodoListBloc>().add(
+                                        TodoListEvent.removeTask(
+                                          task: task,
+                                        ),
+                                      );
+                                },
+                              );
+                            },
+                            childCount: state.unDeletedTasks.length,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
