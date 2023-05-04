@@ -91,7 +91,7 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
                     icon: const Icon(Icons.delete),
                     color: Colors.red,
                     onPressed: () {
-                      widget.onDelete!;
+                      widget.onDelete!.call();
                       Navigator.pop(context);
                     },
                   ),
