@@ -45,13 +45,6 @@ class TodoScreen extends StatelessWidget {
                                         ),
                                       );
                                 },
-                                onPressedDelete: () {
-                                  context.read<TodoListBloc>().add(
-                                        TodoListEvent.removeTask(
-                                          task: task,
-                                        ),
-                                      );
-                                },
                               );
                             },
                             childCount: state.tasks.length,
@@ -90,6 +83,11 @@ class TodoScreen extends StatelessWidget {
                     name: taskDto.name,
                     description: taskDto.description,
                   ),
+                ),
+              ),
+          onDelete: () => context.read<TodoListBloc>().add(
+                TodoListEvent.removeTask(
+                  task: task,
                 ),
               ),
         );

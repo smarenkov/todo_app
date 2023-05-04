@@ -5,12 +5,14 @@ import 'package:todo_mobile_app/ui_kit/ui_kit.dart';
 class EditTaskBottomSheet extends StatefulWidget {
   const EditTaskBottomSheet({
     required this.onSubmit,
+    this.onDelete,
     this.initialName,
     this.initialDescription,
     super.key,
   });
 
   final Function(TaskDto) onSubmit;
+  final VoidCallback? onDelete;
   final String? initialName;
   final String? initialDescription;
 
@@ -62,27 +64,40 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 15,
-              bottom: 15,
-            ),
-            child: AppElevatedButton(
-              icon: const Icon(Icons.check),
-              color: Colors.green,
-              disabled: _submitButtonDisable,
-              onPressed: () {
-                widget.onSubmit(
-                  TaskDto(
-                    name: _taskNameTextController.text,
-                    description: _taskDescriptionTextController.text,
-                    isCompleted: false,
-                    isDeleted: false,
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: AppElevatedButton(
+                    icon: const Icon(Icons.check),
+                    color: Colors.green,
+                    disabled: _submitButtonDisable,
+                    onPressed: () {
+                      widget.onSubmit(
+                        TaskDto(
+                          name: _taskNameTextController.text,
+                          description: _taskDescriptionTextController.text,
+                          isCompleted: false,
+                          isDeleted: false,
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
                   ),
-                );
-                Navigator.pop(context);
-              },
+                ),
+                if (widget.onDelete != null)
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    color: Colors.red,
+                    onPressed: () {
+                      widget.onDelete!;
+                      Navigator.pop(context);
+                    },
+                  ),
+              ],
             ),
-          ),
+          )
         ],
       ),
     );

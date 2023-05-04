@@ -6,14 +6,12 @@ class TodoListItem extends StatelessWidget {
     required this.task,
     required this.onChangedCompleted,
     required this.onPressed,
-    required this.onPressedDelete,
     super.key,
   });
 
   final Task task;
   final Function(bool) onChangedCompleted;
   final VoidCallback onPressed;
-  final VoidCallback onPressedDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +33,6 @@ class TodoListItem extends StatelessWidget {
           value: task.isCompleted,
           shape: const CircleBorder(),
           onChanged: (value) => onChangedCompleted(value ?? false),
-        ),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete),
-          color: Colors.red,
-          onPressed: onPressedDelete,
         ),
         onTap: onPressed,
       ),
