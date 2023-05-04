@@ -4,8 +4,6 @@ import 'package:todo_mobile_app/extensions/task_x.dart';
 import 'package:todo_mobile_app/models/models.dart';
 
 abstract class TaskStorage {
-  Future<void> init();
-
   Future<List<Task>> fetchAll();
 
   Future<void> save(TaskDto task);
@@ -16,12 +14,11 @@ abstract class TaskStorage {
 }
 
 class TaskStorageImpl implements TaskStorage {
-  late Database _database;
-
-  @override
-  Future<void> init() async {
-    _database = Database();
-  }
+  TaskStorageImpl({
+    required Database database,
+  }) : _database = database;
+  
+  final Database _database;
 
   @override
   Future<List<Task>> fetchAll() async {
@@ -63,7 +60,7 @@ class TaskStorageImpl implements TaskStorage {
       isCompleted: drift.Value(task.isCompleted),
       isDeleted: drift.Value(task.isDeleted),
     );
-    
+
     await _database.updateTask(companion);
   }
 }

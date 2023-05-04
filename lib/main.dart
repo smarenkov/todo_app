@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_mobile_app/database/database.dart';
 import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
 import 'package:todo_mobile_app/features/todo/data/task_storage.dart';
 import 'package:todo_mobile_app/features/todo/widgets/todo_screen.dart';
@@ -11,8 +12,8 @@ void main() {
 }
 
 Future<void> _runApp() async {
-  final taskStorage = TaskStorageImpl();
-  await taskStorage.init();
+  final database = Database();
+  final taskStorage = TaskStorageImpl(database: database);
 
   final taskRepository = TaskRepositoryImpl(localStorage: taskStorage);
 
