@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:todo_mobile_app/extensions/task_x.dart';
 import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
 import 'package:todo_mobile_app/models/models.dart';
 
@@ -79,15 +80,8 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
       const TodoListState.fetching(),
     );
 
-    // Sort the list by isCompleted value, false at the beginning, and true after them
     final tasks = await _repository.getAll()
-      ..sort(
-        (a, b) => a.isCompleted == b.isCompleted
-            ? 0
-            : a.isCompleted
-                ? 1
-                : -1,
-      );
+      ..sortByIsCompleted();
 
     emitter.call(
       TodoListState.fetched(

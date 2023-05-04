@@ -18,3 +18,13 @@ extension TaskX on Task {
         isDeleted: isDeleted,
       );
 }
+
+extension TasksX on List<Task> {
+  void sortByIsCompleted() => sort(
+        (a, b) => a.isCompleted == b.isCompleted
+            ? 0
+            : a.isCompleted
+                ? 1
+                : -1,
+      );
+}
