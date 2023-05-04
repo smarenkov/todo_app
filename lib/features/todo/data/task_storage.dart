@@ -1,4 +1,6 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:drift/drift.dart' as drift;
+import 'package:todo_mobile_app/database/database.dart';
+import 'package:todo_mobile_app/extensions/task_x.dart';
 import 'package:todo_mobile_app/models/models.dart';
 
 abstract class TaskStorage {
@@ -6,7 +8,7 @@ abstract class TaskStorage {
 
   Future<List<Task>> fetchAll();
 
-  Future<Task> save(TaskDto task);
+  Future<void> save(TaskDto task);
 
   Future<void> delete(Task task);
 
@@ -14,43 +16,54 @@ abstract class TaskStorage {
 }
 
 class TaskStorageImpl implements TaskStorage {
-  late Box<Task> _taskBox;
+  late Database _database;
 
   @override
   Future<void> init() async {
-    await Hive.initFlutter();
-    Hive.registerAdapter(TaskAdapter());
-
-    _taskBox = await Hive.openBox<Task>('tasks');
+    _database = Database();
   }
 
   @override
   Future<List<Task>> fetchAll() async {
-    return _taskBox.values.toList();
+    final datas = await _database.getTasks();
+    return datas.map(TaskX.fromData).toList();
   }
 
   @override
-  Future<Task> save(TaskDto taskDto) async {
-    final task = Task(
-      id: _taskBox.values.length,
-      name: taskDto.name,
-      description: taskDto.description,
-      isCompleted: taskDto.isCompleted,
-      isDeleted: taskDto.isDeleted,
+  Future<void> save(TaskDto taskDto) async {
+    final companion = TasksCompanion(
+      name: drift.Value(taskDto.name),
+      description: drift.Value(taskDto.description),
+      isCompleted: drift.Value(taskDto.isCompleted),
+      isDeleted: drift.Value(taskDto.isDeleted),
     );
 
-    await _taskBox.add(task);
-
-    return task;
+    await _database.insertTask(companion);
   }
 
   @override
   Future<void> delete(Task task) async {
-    await _taskBox.put(task.id, task.copyWith(isDeleted: true));
+    final companion = TasksCompanion(
+      id: drift.Value(task.id),
+      name: drift.Value(task.name),
+      description: drift.Value(task.description),
+      isCompleted: drift.Value(task.isCompleted),
+      isDeleted: drift.Value(task.isDeleted),
+    );
+
+    await _database.deleteTask(companion);
   }
 
   @override
   Future<void> update(Task task) async {
-    await _taskBox.put(task.id, task);
+    final companion = TasksCompanion(
+      id: drift.Value(task.id),
+      name: drift.Value(task.name),
+      description: drift.Value(task.description),
+      isCompleted: drift.Value(task.isCompleted),
+      isDeleted: drift.Value(task.isDeleted),
+    );
+    
+    await _database.updateTask(companion);
   }
 }

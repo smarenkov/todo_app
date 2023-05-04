@@ -4,7 +4,7 @@ import 'package:todo_mobile_app/models/models.dart';
 abstract class TaskRepository {
   Future<List<Task>> getAll();
 
-  Future<Task> save(TaskDto task);
+  Future<void> save(TaskDto task);
 
   Future<void> update(Task task);
 
@@ -24,7 +24,7 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Task> save(TaskDto taskDto) async {
+  Future<void> save(TaskDto taskDto) async {
     return _localStorage.save(taskDto);
   }
 

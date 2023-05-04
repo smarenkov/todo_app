@@ -1,0 +1,20 @@
+import 'package:todo_mobile_app/database/database.dart';
+import 'package:todo_mobile_app/models/models.dart';
+
+extension TaskX on Task {
+  static Task fromData(TaskData data) => Task(
+        id: data.id,
+        name: data.name,
+        description: data.description,
+        isCompleted: data.isCompleted,
+        isDeleted: data.isDeleted,
+      );
+
+  TaskData toData(Task task) => TaskData(
+        id: id,
+        name: name,
+        description: description,
+        isCompleted: isCompleted,
+        isDeleted: isDeleted,
+      );
+}
