@@ -6,9 +6,3 @@ The project supports mobile, web and desktop platforms.
 
 Project Features:
 - Create, read, update and delete todo tasks
-
-Future Features:
-- History of deleting tasks
-- Restore deleted tasks
-- Permanent deletion of tasks
-- Design improvement

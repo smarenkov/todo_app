@@ -31,7 +31,7 @@ class TodoScreen extends StatelessWidget {
                         SliverList(
                           delegate: SliverChildBuilderDelegate(
                             (context, index) {
-                              final task = state.unDeletedTasks[index];
+                              final task = state.tasks[index];
                               return TodoListItem(
                                 task: task,
                                 onPressed: () {
@@ -54,7 +54,7 @@ class TodoScreen extends StatelessWidget {
                                 },
                               );
                             },
-                            childCount: state.unDeletedTasks.length,
+                            childCount: state.tasks.length,
                           ),
                         ),
                       ],

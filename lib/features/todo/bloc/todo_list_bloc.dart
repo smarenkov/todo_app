@@ -19,10 +19,6 @@ class TodoListState with _$TodoListState {
         orElse: () => false,
       );
 
-  List<Task> get unDeletedTasks => maybeMap(
-        orElse: () => tasks.where((task) => !task.isDeleted).toList(),
-      );
-
   const factory TodoListState.initial({
     @Default(<Task>[]) List<Task> tasks,
   }) = _TodoListStateInitial;
