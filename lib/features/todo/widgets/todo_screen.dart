@@ -4,7 +4,6 @@ import 'package:todo_mobile_app/features/todo/bloc/todo_list_bloc.dart';
 import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
 import 'package:todo_mobile_app/features/todo/widgets/edit_task_bottom_sheet.dart';
 import 'package:todo_mobile_app/features/todo/widgets/todo_list_item.dart';
-import 'package:todo_mobile_app/features/todo/widgets/todo_screen_header.dart';
 import 'package:todo_mobile_app/models/todo/task.dart';
 import 'package:todo_mobile_app/ui_kit/app_elevated_button.dart';
 import 'package:todo_mobile_app/utils/utils.dart';
@@ -24,7 +23,30 @@ class TodoScreen extends StatelessWidget {
             return SafeArea(
               child: Column(
                 children: [
-                  const TodoScreenHeader(),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Todo tasks',
+                      style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
+                    ),
+                  ),
+                  if (state.fetched && state.tasks.isEmpty)
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Text(
+                        'Your task list is empty. Lets create a new task!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
                   Expanded(
                     child: CustomScrollView(
                       slivers: [

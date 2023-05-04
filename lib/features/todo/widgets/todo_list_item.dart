@@ -18,22 +18,28 @@ class TodoListItem extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text(
-          '#${task.id} ${task.name}',
+          task.name,
           style: TextStyle(
             decoration: task.isCompleted ? TextDecoration.lineThrough : null,
           ),
         ),
-        subtitle: Text(
-          task.description,
-          style: TextStyle(
-            decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-          ),
-        ),
+        subtitle: task.description.isEmpty
+            ? null
+            : Text(
+                task.description,
+                style: TextStyle(
+                  decoration:
+                      task.isCompleted ? TextDecoration.lineThrough : null,
+                ),
+              ),
         leading: Checkbox(
-          value: task.isCompleted,
-          shape: const CircleBorder(),
-          onChanged: (value) => onChangedCompleted(value ?? false),
-        ),
+            value: task.isCompleted,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+              side: const BorderSide(color: Colors.grey),
+            ),
+            onChanged: (value) => onChangedCompleted(value ?? false),
+          ),
         onTap: onPressed,
       ),
     );
