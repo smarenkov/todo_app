@@ -7,5 +7,4 @@ class Tasks extends Table {
   TextColumn get name => text()();
   TextColumn get description => text()();
   BoolColumn get isCompleted => boolean()();
-  BoolColumn get isDeleted => boolean()();
 }

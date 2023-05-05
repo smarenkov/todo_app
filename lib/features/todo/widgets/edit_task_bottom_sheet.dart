@@ -79,7 +79,6 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
                           name: _taskNameTextController.text,
                           description: _taskDescriptionTextController.text,
                           isCompleted: false,
-                          isDeleted: false,
                         ),
                       );
                       Navigator.pop(context);

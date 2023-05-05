@@ -8,6 +8,5 @@ class TaskDto with _$TaskDto {
     required String name,
     required String description,
     required bool isCompleted,
-    required bool isDeleted,
   }) = _TaskDto;
 }

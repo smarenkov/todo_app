@@ -7,7 +7,6 @@ extension TaskX on Task {
         name: data.name,
         description: data.description,
         isCompleted: data.isCompleted,
-        isDeleted: data.isDeleted,
       );
 
   TaskData toData(Task task) => TaskData(
@@ -15,7 +14,6 @@ extension TaskX on Task {
         name: name,
         description: description,
         isCompleted: isCompleted,
-        isDeleted: isDeleted,
       );
 }
 

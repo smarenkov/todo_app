@@ -9,6 +9,5 @@ class Task with _$Task {
     required String name,
     required String description,
     required bool isCompleted,
-    required bool isDeleted,
   }) = _Task;
 }

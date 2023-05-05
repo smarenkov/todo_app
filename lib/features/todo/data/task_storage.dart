@@ -32,7 +32,6 @@ class TaskStorageImpl implements TaskStorage {
       name: drift.Value(taskDto.name),
       description: drift.Value(taskDto.description),
       isCompleted: drift.Value(taskDto.isCompleted),
-      isDeleted: drift.Value(taskDto.isDeleted),
     );
 
     await _database.insertTask(companion);
@@ -45,7 +44,6 @@ class TaskStorageImpl implements TaskStorage {
       name: drift.Value(task.name),
       description: drift.Value(task.description),
       isCompleted: drift.Value(task.isCompleted),
-      isDeleted: drift.Value(task.isDeleted),
     );
 
     await _database.deleteTask(companion);
@@ -58,7 +56,6 @@ class TaskStorageImpl implements TaskStorage {
       name: drift.Value(task.name),
       description: drift.Value(task.description),
       isCompleted: drift.Value(task.isCompleted),
-      isDeleted: drift.Value(task.isDeleted),
     );
 
     await _database.updateTask(companion);
