@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_mobile_app/features/todo/bloc/todo_list_bloc.dart';
-import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
-import 'package:todo_mobile_app/features/todo/widgets/edit_task_bottom_sheet.dart';
-import 'package:todo_mobile_app/features/todo/widgets/todo_list_item.dart';
-import 'package:todo_mobile_app/models/todo/task.dart';
-import 'package:todo_mobile_app/ui_kit/app_elevated_button.dart';
-import 'package:todo_mobile_app/utils/utils.dart';
+import 'package:todo_app/features/todo/bloc/todo_list_bloc.dart';
+import 'package:todo_app/features/todo/data/task_repository.dart';
+import 'package:todo_app/features/todo/widgets/edit_task_bottom_sheet.dart';
+import 'package:todo_app/features/todo/widgets/todo_list_item.dart';
+import 'package:todo_app/models/todo/task.dart';
+import 'package:todo_app/ui_kit/app_elevated_button.dart';
+import 'package:todo_app/utils/utils.dart';
 
 class TodoScreen extends StatelessWidget {
   const TodoScreen({super.key});

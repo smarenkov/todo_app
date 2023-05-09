@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' as drift;
-import 'package:todo_mobile_app/database/database.dart';
-import 'package:todo_mobile_app/extensions/task_x.dart';
-import 'package:todo_mobile_app/models/models.dart';
+import 'package:todo_app/database/database.dart';
+import 'package:todo_app/extensions/task_x.dart';
+import 'package:todo_app/models/models.dart';
 
 abstract class TaskStorage {
   Future<List<Task>> fetchAll();
@@ -17,7 +17,7 @@ class TaskStorageImpl implements TaskStorage {
   TaskStorageImpl({
     required Database database,
   }) : _database = database;
-  
+
   final Database _database;
 
   @override

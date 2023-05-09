@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_mobile_app/database/database.dart';
-import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
-import 'package:todo_mobile_app/features/todo/data/task_storage.dart';
-import 'package:todo_mobile_app/features/todo/widgets/todo_screen.dart';
-import 'package:todo_mobile_app/utils/utils.dart';
+import 'package:todo_app/database/database.dart';
+import 'package:todo_app/features/todo/data/task_repository.dart';
+import 'package:todo_app/features/todo/data/task_storage.dart';
+import 'package:todo_app/features/todo/widgets/todo_screen.dart';
+import 'package:todo_app/utils/utils.dart';
 
 void main() {
   _runApp();

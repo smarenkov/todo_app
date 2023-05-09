@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:todo_mobile_app/extensions/task_x.dart';
-import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
-import 'package:todo_mobile_app/models/models.dart';
+import 'package:todo_app/extensions/task_x.dart';
+import 'package:todo_app/features/todo/data/task_repository.dart';
+import 'package:todo_app/models/models.dart';
 
 part 'todo_list_bloc.freezed.dart';
 

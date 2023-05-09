@@ -1,4 +1,4 @@
-import 'package:todo_mobile_app/features/todo/data/task_repository.dart';
+import 'package:todo_app/features/todo/data/task_repository.dart';
 
 class AppDependencies {
   AppDependencies({

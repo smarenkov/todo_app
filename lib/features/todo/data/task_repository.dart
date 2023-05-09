@@ -1,5 +1,5 @@
-import 'package:todo_mobile_app/features/todo/data/task_storage.dart';
-import 'package:todo_mobile_app/models/models.dart';
+import 'package:todo_app/features/todo/data/task_storage.dart';
+import 'package:todo_app/models/models.dart';
 
 abstract class TaskRepository {
   Future<List<Task>> getAll();

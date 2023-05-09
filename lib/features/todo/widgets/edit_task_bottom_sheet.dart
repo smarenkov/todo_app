@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_mobile_app/models/models.dart';
-import 'package:todo_mobile_app/ui_kit/ui_kit.dart';
+import 'package:todo_app/models/models.dart';
+import 'package:todo_app/ui_kit/ui_kit.dart';
 
 class EditTaskBottomSheet extends StatefulWidget {
   const EditTaskBottomSheet({

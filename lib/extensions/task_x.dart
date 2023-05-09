@@ -1,5 +1,5 @@
-import 'package:todo_mobile_app/database/database.dart';
-import 'package:todo_mobile_app/models/models.dart';
+import 'package:todo_app/database/database.dart';
+import 'package:todo_app/models/models.dart';
 
 extension TaskX on Task {
   static Task fromData(TaskData data) => Task(

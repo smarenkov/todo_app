@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_mobile_app/models/models.dart';
+import 'package:todo_app/models/models.dart';
 
 class TodoListItem extends StatelessWidget {
   const TodoListItem({
@@ -33,13 +33,13 @@ class TodoListItem extends StatelessWidget {
                 ),
               ),
         leading: Checkbox(
-            value: task.isCompleted,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-              side: const BorderSide(color: Colors.grey),
-            ),
-            onChanged: (value) => onChangedCompleted(value ?? false),
+          value: task.isCompleted,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+            side: const BorderSide(color: Colors.grey),
           ),
+          onChanged: (value) => onChangedCompleted(value ?? false),
+        ),
         onTap: onPressed,
       ),
     );

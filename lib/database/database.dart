@@ -4,7 +4,7 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
-import 'package:todo_mobile_app/database/tables/tasks.dart';
+import 'package:todo_app/database/tables/tasks.dart';
 
 part 'database.g.dart';
 
