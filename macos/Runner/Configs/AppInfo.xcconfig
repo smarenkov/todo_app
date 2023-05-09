@@ -8,7 +8,7 @@
 PRODUCT_NAME = todo_app
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.todoMobileApp
+PRODUCT_BUNDLE_IDENTIFIER = com.smarenkov.todoMobileApp
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.smarenkov. All rights reserved.
