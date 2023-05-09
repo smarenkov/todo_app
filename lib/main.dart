@@ -43,6 +43,7 @@ class MainApp extends StatelessWidget {
         ),
       ],
       child: const MaterialApp(
+        title: 'Todo',
         home: TodoScreen(),
       ),
     );
