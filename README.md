@@ -1,4 +1,4 @@
-# Todo mobile application
+# Todo app
 
 A todo project created in flutter using BloC and Drift. Developed using the concept of Clean Architecture and Features Driven Development.
 
