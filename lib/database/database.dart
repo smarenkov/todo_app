@@ -13,7 +13,7 @@ class Database extends _$Database {
   Database() : super(_openConnection());
 
   @override
-  int get schemaVersion => 0;
+  int get schemaVersion => 1;
 
   Future<List<TaskData>> getTasks() async {
     return select(tasks).get();
