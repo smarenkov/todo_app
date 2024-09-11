@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/database/database.dart';
+import 'package:todo_app/extensions/build_context_x.dart';
 import 'package:todo_app/features/settings/widgets/settings_screen.dart';
 import 'package:todo_app/features/todo/data/task_repository.dart';
 import 'package:todo_app/features/todo/data/task_storage.dart';
 import 'package:todo_app/features/todo/widgets/todo_screen.dart';
 import 'package:todo_app/router/routes.dart';
+import 'package:todo_app/theme/locale_provider.dart';
 import 'package:todo_app/theme/theme_provider.dart';
 import 'package:todo_app/utils/utils.dart';
 
@@ -20,6 +23,7 @@ Future<void> _runApp() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   final themeProvider = ThemeProvider();
+  final localeProvider = LocaleProvider();
 
   final database = Database();
   final taskStorage = TaskStorageImpl(database: database);
@@ -31,6 +35,7 @@ Future<void> _runApp() async {
     MainApp(
       appDependencies: AppDependencies(
         themeProvider: themeProvider,
+        localeProvider: localeProvider,
         taskRepository: taskRepository,
       ),
     ),
@@ -52,19 +57,25 @@ class MainApp extends StatelessWidget {
         ChangeNotifierProvider<ThemeProvider>(
           create: (context) => appDependencies.themeProvider,
         ),
+        ChangeNotifierProvider<LocaleProvider>(
+          create: (context) => appDependencies.localeProvider,
+        ),
         RepositoryProvider<TaskRepository>(
           create: (context) => appDependencies.taskRepository,
         ),
       ],
       builder: (context, child) {
         return MaterialApp(
-          title: 'Todo',
           theme: context.watch<ThemeProvider>().theme,
-          home: const TodoScreen(),
+          locale: context.watch<LocaleProvider>().locale,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          onGenerateTitle: (context) => context.l10n.applicationName,
           routes: {
             AppRoutes.todos: (context) => const TodoScreen(),
             AppRoutes.settings: (context) => const SettingsScreen(),
           },
+          home: const TodoScreen(),
         );
       },
     );

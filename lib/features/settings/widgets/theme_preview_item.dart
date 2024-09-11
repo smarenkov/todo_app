@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/theme/theme_type.dart';
-import 'package:todo_app/theme/themes.dart';
+import 'package:todo_app/extensions/build_context_x.dart';
 import 'package:todo_app/theme/theme_provider.dart';
+import 'package:todo_app/theme/theme_type.dart';
 
 class ThemePreviewItem extends StatelessWidget {
-  final String name;
-  final String description;
-  final ThemeType type;
-
   const ThemePreviewItem({
     required this.name,
     required this.description,
@@ -16,18 +12,22 @@ class ThemePreviewItem extends StatelessWidget {
     super.key,
   });
 
-  factory ThemePreviewItem.light() {
-    return const ThemePreviewItem(
-      name: 'Light',
-      description: 'Light Theme',
+  final String name;
+  final String description;
+  final ThemeType type;
+
+  factory ThemePreviewItem.light(BuildContext context) {
+    return ThemePreviewItem(
+      name: context.l10n.lightThemeName,
+      description: context.l10n.lightThemeDescription,
       type: ThemeType.light,
     );
   }
 
-  factory ThemePreviewItem.dark() {
-    return const ThemePreviewItem(
-      name: 'Dark',
-      description: 'Dark Theme',
+  factory ThemePreviewItem.dark(BuildContext context) {
+    return ThemePreviewItem(
+      name: context.l10n.darkThemeName,
+      description: context.l10n.darkThemeDescription,
       type: ThemeType.dark,
     );
   }

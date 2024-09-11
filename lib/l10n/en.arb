@@ -1,0 +1,17 @@
+{
+    "@@locale": "en",
+    "applicationName": "Todo",
+    "settingsScreenTitle": "Settings",
+    "themesListTitle": "Themes",
+    "lightThemeName": "Light",
+    "lightThemeDescription": "Light theme",
+    "darkThemeName": "Dark",
+    "darkThemeDescription": "Dark theme",
+    "todoScreenTitle": "Todos",
+    "emptyTodoListDescription": "Your task list is empty. Lets create a new task!",
+    "taskNameInputHint": "Input your task",
+    "taskDescriptionInputHint": "Input description",
+    "languagesListTitle": "Languages",
+    "russianLanguageName": "Russian",
+    "englishLanguageName": "English"
+}

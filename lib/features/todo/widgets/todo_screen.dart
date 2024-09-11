@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/extensions/build_context_x.dart';
 import 'package:todo_app/features/todo/bloc/todo_list_bloc.dart';
 import 'package:todo_app/features/todo/data/task_repository.dart';
 import 'package:todo_app/features/todo/widgets/edit_task_bottom_sheet.dart';
@@ -22,9 +23,9 @@ class TodoScreen extends StatelessWidget {
             icon: const Icon(Icons.settings),
           ),
         ],
-        title: const Text(
-          'Todo tasks',
-          style: TextStyle(
+        title: Text(
+          context.l10n.todoScreenTitle,
+          style: const TextStyle(
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.bold,
             fontSize: 28,
@@ -42,12 +43,12 @@ class TodoScreen extends StatelessWidget {
                 children: [
                   const SizedBox(height: 10),
                   if (state.fetched && state.tasks.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Text(
-                        'Your task list is empty. Lets create a new task!',
+                        context.l10n.emptyTodoListDescription,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.normal,
                           fontSize: 16,

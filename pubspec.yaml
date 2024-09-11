@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
   flutter_bloc: ^8.1.2
   drift: ^2.7.0
   sqlite3_flutter_libs: ^0.5.13
@@ -16,6 +19,7 @@ dependencies:
   path: ^1.8.2
   flutter_native_splash: ^2.4.1
   shared_preferences: ^2.3.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +32,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/

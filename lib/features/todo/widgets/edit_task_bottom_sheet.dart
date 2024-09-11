@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/extensions/build_context_x.dart';
 import 'package:todo_app/models/models.dart';
 import 'package:todo_app/ui_kit/ui_kit.dart';
 
@@ -49,8 +50,8 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
         children: [
           TextField(
             controller: _taskNameTextController,
-            decoration: const InputDecoration(
-              hintText: 'Task name',
+            decoration: InputDecoration(
+              hintText: context.l10n.taskNameInputHint,
             ),
             onChanged: (text) => setState(
               () => _submitButtonDisable = text.isEmpty,
@@ -59,8 +60,8 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
           ),
           TextField(
             controller: _taskDescriptionTextController,
-            decoration: const InputDecoration(
-              hintText: 'Description',
+            decoration: InputDecoration(
+              hintText: context.l10n.taskDescriptionInputHint,
             ),
           ),
           Padding(
@@ -96,7 +97,7 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
                   ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -1,0 +1,17 @@
+{
+    "@@locale": "ru",
+    "applicationName": "Задачи",
+    "settingsScreenTitle": "Настройки",
+    "themesListTitle": "Темы",
+    "lightThemeName": "Светлая",
+    "lightThemeDescription": "Светлая тема",
+    "darkThemeName": "Темная",
+    "darkThemeDescription": "Темная тема",
+    "todoScreenTitle": "Задачи",
+    "emptyTodoListDescription": "Твой список задач пустой. Давай создадим новую задачу!",
+    "taskNameInputHint": "Введите свою задачу",
+    "taskDescriptionInputHint": "Введите описание",
+    "languagesListTitle": "Языки",
+    "russianLanguageName": "Русский",
+    "englishLanguageName": "Английский"
+}
