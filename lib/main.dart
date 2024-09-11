@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/database/database.dart';
+import 'package:todo_app/features/settings/widgets/settings_screen.dart';
 import 'package:todo_app/features/todo/data/task_repository.dart';
 import 'package:todo_app/features/todo/data/task_storage.dart';
 import 'package:todo_app/features/todo/widgets/todo_screen.dart';
+import 'package:todo_app/router/routes.dart';
 import 'package:todo_app/theme/theme_provider.dart';
 import 'package:todo_app/utils/utils.dart';
 
@@ -59,6 +61,10 @@ class MainApp extends StatelessWidget {
           title: 'Todo',
           theme: context.watch<ThemeProvider>().theme,
           home: const TodoScreen(),
+          routes: {
+            AppRoutes.todos: (context) => const TodoScreen(),
+            AppRoutes.settings: (context) => const SettingsScreen(),
+          },
         );
       },
     );

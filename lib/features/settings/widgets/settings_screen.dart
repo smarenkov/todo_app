@@ -12,21 +12,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Todo tasks',
+          style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Settings',
-                style: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                ),
-              ),
-              const SizedBox(height: 12),
               const Text(
                 'Theme',
                 style: TextStyle(

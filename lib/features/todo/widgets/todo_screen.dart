@@ -5,6 +5,7 @@ import 'package:todo_app/features/todo/data/task_repository.dart';
 import 'package:todo_app/features/todo/widgets/edit_task_bottom_sheet.dart';
 import 'package:todo_app/features/todo/widgets/todo_list_item.dart';
 import 'package:todo_app/models/todo/task.dart';
+import 'package:todo_app/router/routes.dart';
 import 'package:todo_app/ui_kit/app_elevated_button.dart';
 import 'package:todo_app/utils/utils.dart';
 
@@ -14,6 +15,22 @@ class TodoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.of(context).pushNamed(AppRoutes.settings),
+            icon: const Icon(Icons.settings),
+          ),
+        ],
+        title: const Text(
+          'Todo tasks',
+          style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+          ),
+        ),
+      ),
       body: BlocProvider(
         create: (context) => TodoListBloc(
           repository: RepositoryProvider.of<TaskRepository>(context),
@@ -23,17 +40,7 @@ class TodoScreen extends StatelessWidget {
             return SafeArea(
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Todo tasks',
-                      style: TextStyle(
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                      ),
-                    ),
-                  ),
+                  const SizedBox(height: 10),
                   if (state.fetched && state.tasks.isEmpty)
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25),
