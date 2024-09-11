@@ -6,6 +6,7 @@ import 'package:todo_app/database/database.dart';
 import 'package:todo_app/features/todo/data/task_repository.dart';
 import 'package:todo_app/features/todo/data/task_storage.dart';
 import 'package:todo_app/features/todo/widgets/todo_screen.dart';
+import 'package:todo_app/theme/theme_provider.dart';
 import 'package:todo_app/utils/utils.dart';
 
 void main() {
@@ -16,6 +17,8 @@ Future<void> _runApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+  final themeProvider = ThemeProvider();
+
   final database = Database();
   final taskStorage = TaskStorageImpl(database: database);
   final taskRepository = TaskRepositoryImpl(localStorage: taskStorage);
@@ -25,6 +28,7 @@ Future<void> _runApp() async {
   runApp(
     MainApp(
       appDependencies: AppDependencies(
+        themeProvider: themeProvider,
         taskRepository: taskRepository,
       ),
     ),
@@ -43,14 +47,20 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (context) => appDependencies.themeProvider,
+        ),
         RepositoryProvider<TaskRepository>(
           create: (context) => appDependencies.taskRepository,
         ),
       ],
-      child: const MaterialApp(
-        title: 'Todo',
-        home: TodoScreen(),
-      ),
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'Todo',
+          theme: context.watch<ThemeProvider>().theme,
+          home: const TodoScreen(),
+        );
+      },
     );
   }
 }
