@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/theme/locale_provider.dart';
+import 'package:todo_app/shared/locale_provider.dart';
 
 class LanguageListTile extends StatelessWidget {
   const LanguageListTile({

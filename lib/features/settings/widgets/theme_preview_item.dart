@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/extensions/build_context_x.dart';
-import 'package:todo_app/theme/theme_provider.dart';
+import 'package:todo_app/shared/theme_provider.dart';
 import 'package:todo_app/theme/theme_type.dart';
 
 class ThemePreviewItem extends StatelessWidget {
