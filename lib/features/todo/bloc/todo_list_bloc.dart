@@ -20,6 +20,11 @@ class TodoListState with _$TodoListState {
         orElse: () => false,
       );
 
+  bool get error => maybeMap(
+        error: (_) => true,
+        orElse: () => false,
+      );
+
   const factory TodoListState.initial({
     @Default(<Task>[]) List<Task> tasks,
   }) = _TodoListStateInitial;
@@ -31,6 +36,10 @@ class TodoListState with _$TodoListState {
   const factory TodoListState.fetched({
     @Default(<Task>[]) List<Task> tasks,
   }) = _TodoListStateFetched;
+
+  const factory TodoListState.error({
+    @Default(<Task>[]) List<Task> tasks,
+  }) = _TodoListStateError;
 }
 
 @freezed
@@ -76,24 +85,31 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
     _TodoListEventFetch event,
     Emitter<TodoListState> emitter,
   ) async {
-    emitter.call(
-      const TodoListState.fetching(),
-    );
+    try {
+      emitter.call(
+        const TodoListState.fetching(),
+      );
 
-    final tasks = await _repository.getAll()
-      ..sortByIsCompleted();
+      final tasks = await _repository.getAll()
+        ..sortByIsCompleted();
 
-    emitter.call(
-      TodoListState.fetched(
-        tasks: tasks,
-      ),
-    );
+      emitter.call(
+        TodoListState.fetched(
+          tasks: tasks,
+        ),
+      );
+    } on Exception {
+      emitter.call(
+        const TodoListState.error(),
+      );
+    }
   }
 
   Future<void> _addTask(
     _TodoListEventAddTask event,
     Emitter<TodoListState> emitter,
   ) async {
+    //TODO: add try-catch block
     await _repository.save(event.taskDto);
     add(const TodoListEvent.fetch());
   }
@@ -102,6 +118,7 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
     _TodoListEventRemoveTask event,
     Emitter<TodoListState> emitter,
   ) async {
+    //TODO: add try-catch block
     await _repository.delete(event.task);
     add(const TodoListEvent.fetch());
   }
@@ -110,6 +127,7 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
     _TodoListEventUpdateTask event,
     Emitter<TodoListState> emitter,
   ) async {
+    //TODO: add try-catch block
     await _repository.update(event.task);
     add(const TodoListEvent.fetch());
   }

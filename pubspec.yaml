@@ -29,6 +29,8 @@ dev_dependencies:
   freezed_annotation: ^2.2.0
   drift_dev: ^2.7.0
   build_runner: ^2.3.3
+  bloc_test: ^9.1.7
+  mockito: ^5.4.4
 
 flutter:
   uses-material-design: true
