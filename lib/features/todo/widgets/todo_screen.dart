@@ -19,7 +19,8 @@ class TodoScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => Navigator.of(context).pushNamed(AppRoutes.settings),
+            onPressed: () =>
+                Navigator.of(context).pushNamed(AppRoutes.settings),
             icon: const Icon(Icons.settings),
           ),
         ],
@@ -67,7 +68,7 @@ class TodoScreen extends StatelessWidget {
                                 onPressed: () {
                                   showEditTask(context, task);
                                 },
-                                onChangedCompleted: (value) {
+                                onCompleted: (value) {
                                   context.read<TodoListBloc>().add(
                                         TodoListEvent.updateTask(
                                           task:

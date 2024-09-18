@@ -4,13 +4,13 @@ import 'package:todo_app/models/models.dart';
 class TodoListItem extends StatelessWidget {
   const TodoListItem({
     required this.task,
-    required this.onChangedCompleted,
+    required this.onCompleted,
     required this.onPressed,
     super.key,
   });
 
   final Task task;
-  final Function(bool) onChangedCompleted;
+  final ValueChanged<bool> onCompleted;
   final VoidCallback onPressed;
 
   @override
@@ -38,7 +38,7 @@ class TodoListItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
             side: const BorderSide(color: Colors.grey),
           ),
-          onChanged: (value) => onChangedCompleted(value ?? false),
+          onChanged: (value) => onCompleted(value ?? false),
         ),
         onTap: onPressed,
       ),

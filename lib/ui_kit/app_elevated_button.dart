@@ -19,9 +19,9 @@ class AppElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: disabled ? null : onPressed,
       style: ButtonStyle(
-        shape: MaterialStateProperty.all(const CircleBorder()),
-        padding: MaterialStateProperty.all(const EdgeInsets.all(20)),
-        backgroundColor: MaterialStateProperty.all(disabled ? Colors.grey : color),
+        shape: WidgetStateProperty.all(const CircleBorder()),
+        padding: WidgetStateProperty.all(const EdgeInsets.all(20)),
+        backgroundColor: WidgetStateProperty.all(disabled ? Colors.grey : color),
       ),
       child: icon,
     );
