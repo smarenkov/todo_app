@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  get:
+    desc: Get dependencies
+    cmds:
+      - flutter pub get
+
+  gen:
+    desc: Generate files
+    cmds:
+      - dart run build_runner build -d
