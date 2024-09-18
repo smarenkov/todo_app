@@ -45,10 +45,12 @@ Future<void> _runApp() async {
 class MainApp extends StatelessWidget {
   const MainApp({
     required this.appDependencies,
+    this.home = const TodoScreen(),
     super.key,
   });
 
   final AppDependencies appDependencies;
+  final Widget home;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class MainApp extends StatelessWidget {
             AppRoutes.todos: (context) => const TodoScreen(),
             AppRoutes.settings: (context) => const SettingsScreen(),
           },
-          home: const TodoScreen(),
+          home: home,
         );
       },
     );

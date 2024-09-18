@@ -49,6 +49,7 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
+            key: const Key('task_name_input'),
             controller: _taskNameTextController,
             decoration: InputDecoration(
               hintText: context.l10n.taskNameInputHint,
@@ -59,6 +60,7 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
             autofocus: true,
           ),
           TextField(
+            key: const Key('task_description_input'), 
             controller: _taskDescriptionTextController,
             decoration: InputDecoration(
               hintText: context.l10n.taskDescriptionInputHint,
@@ -71,6 +73,7 @@ class _EditTaskBottomSheetState extends State<EditTaskBottomSheet> {
               children: [
                 Expanded(
                   child: AppElevatedButton(
+                    key: const Key('submit_task_editing_button'),
                     icon: const Icon(Icons.check),
                     color: Colors.green,
                     disabled: _submitButtonDisable,

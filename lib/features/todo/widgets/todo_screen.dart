@@ -87,6 +87,7 @@ class TodoScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: AppElevatedButton(
+                      key: const Key('add_task_button'),
                       icon: const Icon(Icons.add),
                       color: Colors.blue,
                       onPressed: () => showCreateTask(context),
@@ -106,6 +107,7 @@ class TodoScreen extends StatelessWidget {
       context: context,
       builder: (_) {
         return EditTaskBottomSheet(
+          key: const Key('edit_task_bottom_sheet'),
           initialName: task.name,
           initialDescription: task.description,
           onSubmit: (taskDto) => context.read<TodoListBloc>().add(
@@ -131,6 +133,7 @@ class TodoScreen extends StatelessWidget {
       context: context,
       builder: (_) {
         return EditTaskBottomSheet(
+          key: const Key('create_task_bottom_sheet'),
           onSubmit: (taskDto) => context.read<TodoListBloc>().add(
                 TodoListEvent.addTask(
                   taskDto: taskDto,
