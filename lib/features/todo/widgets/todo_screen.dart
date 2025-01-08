@@ -35,7 +35,7 @@ class TodoScreen extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => TodoListBloc(
-          repository: RepositoryProvider.of<TaskRepository>(context),
+          repository: context.taskRepository,
         ),
         child: BlocBuilder<TodoListBloc, TodoListState>(
           builder: (context, state) {
@@ -69,12 +69,11 @@ class TodoScreen extends StatelessWidget {
                                   showEditTask(context, task);
                                 },
                                 onCompleted: (value) {
-                                  context.read<TodoListBloc>().add(
-                                        TodoListEvent.updateTask(
-                                          task:
-                                              task.copyWith(isCompleted: value),
-                                        ),
-                                      );
+                                  context.todoListBloc.add(
+                                    TodoListEvent.updateTask(
+                                      task: task.copyWith(isCompleted: value),
+                                    ),
+                                  );
                                 },
                               );
                             },
@@ -110,19 +109,19 @@ class TodoScreen extends StatelessWidget {
           key: const Key('edit_task_bottom_sheet'),
           initialName: task.name,
           initialDescription: task.description,
-          onSubmit: (taskDto) => context.read<TodoListBloc>().add(
-                TodoListEvent.updateTask(
-                  task: task.copyWith(
-                    name: taskDto.name,
-                    description: taskDto.description,
-                  ),
-                ),
+          onSubmit: (taskDto) => context.todoListBloc.add(
+            TodoListEvent.updateTask(
+              task: task.copyWith(
+                name: taskDto.name,
+                description: taskDto.description,
               ),
-          onDelete: () => context.read<TodoListBloc>().add(
-                TodoListEvent.removeTask(
-                  task: task,
-                ),
-              ),
+            ),
+          ),
+          onDelete: () => context.todoListBloc.add(
+            TodoListEvent.removeTask(
+              task: task,
+            ),
+          ),
         );
       },
     );
@@ -134,11 +133,13 @@ class TodoScreen extends StatelessWidget {
       builder: (_) {
         return EditTaskBottomSheet(
           key: const Key('create_task_bottom_sheet'),
-          onSubmit: (taskDto) => context.read<TodoListBloc>().add(
-                TodoListEvent.addTask(
-                  taskDto: taskDto,
-                ),
+          onSubmit: (taskDto) async {
+            context.todoListBloc.add(
+              TodoListEvent.addTask(
+                taskDto: taskDto,
               ),
+            );
+          },
         );
       },
     );

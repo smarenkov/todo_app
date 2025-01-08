@@ -12,7 +12,7 @@ class EditTaskBottomSheet extends StatefulWidget {
     super.key,
   });
 
-  final Function(TaskDto) onSubmit;
+  final ValueChanged<TaskDto> onSubmit;
   final VoidCallback? onDelete;
   final String? initialName;
   final String? initialDescription;
